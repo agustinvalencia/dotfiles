@@ -1,3 +1,5 @@
+export EDITOR=nvim
+export VISUAL="$EDITOR"
 
 # aliases
 alias ll='ls -l --color'
