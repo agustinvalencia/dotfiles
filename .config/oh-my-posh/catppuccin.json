@@ -14,7 +14,7 @@
         {
           "foreground": "p:os",
           "style": "plain",
-          "template": "{{.Icon}} ",
+          "template": " ",
           "type": "os"
         },
         {
@@ -26,8 +26,8 @@
         {
           "foreground": "p:pink",
           "properties": {
-            "folder_icon": "..\ue5fe..",
-            "home_icon": "~",
+            "folder_icon": " ",
+            "home_icon": " ",
             "style": "agnoster_short"
           },
           "style": "plain",
