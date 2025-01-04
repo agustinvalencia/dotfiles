@@ -4,25 +4,15 @@
         "os": "#ACB0BE",
         "closer": "p:os",
         "pink": "#F4B8E4",
-        "lavender": "#BABBF1",
+        "lavender": "#bc93ff",
+      "lightgray": "#BABBF1",
         "blue":  "#8CAAEE"
   },
   "blocks": [
     {
       "alignment": "left",
+      "newline": true, 
       "segments": [
-        {
-          "foreground": "p:os",
-          "style": "plain",
-          "template": " ",
-          "type": "os"
-        },
-        {
-          "foreground": "p:blue",
-          "style": "plain",
-          "template": "{{ .UserName }} ",
-          "type": "session"
-        },
         {
           "foreground": "p:pink",
           "properties": {
@@ -51,11 +41,33 @@
           "template": "{{ .HEAD }} ",
           "style": "plain",
           "type": "git"
-        },
-        {
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "right",
+      "segments" : [
+          {
+          "foreground": "#bc93ff",
+          "properties": {
+            "time_format": "15:04"
+          },
           "style": "plain",
-          "foreground": "p:closer",
-          "template": "\uf105",
+          "template": " {{ .CurrentDate | date .Format }} ",
+          "type": "time"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "foreground" : "p:pink",
+          "style": "plain",
+          "template": " ",
           "type": "text"
         }
       ],
@@ -63,6 +75,12 @@
     }
   ],
   "final_space": true,
-  "version": 3
+  "version": 3,
+  "transient_prompt" : {
+    "template": " ", 
+    "background": "transparent",
+    "foreground": "p:blue",
+    "newline": true
+  }
 }
 
