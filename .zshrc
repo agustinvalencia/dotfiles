@@ -16,5 +16,16 @@ alias tree='eza --tree --color --icons=always'
 alias vim='nvim' 
 alias cd='z'
 
+# TUI for file navigator
+function files() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+
 # prompt line
 eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/catppuccin.json)"
