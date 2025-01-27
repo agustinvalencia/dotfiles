@@ -96,6 +96,19 @@ vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
+
+-- vimtex
+vim.g.vimtex_compiler_method = 'latexmk'
+vim.g.vimtex_compiler_latexmk = {
+  options = {
+    '-xelatex',
+    '-shell-escape',
+    '-synctex=1',
+    '-interaction=nonstopmode',
+  },
+}
+vim.g.vimtex_compiler_method = 'latexmk'
+vim.g.tex_flavor = 'latex' -- Recognise .tex files as LaTeX
 --
 -- [[ Setting options ]]
 -- See `:help vim.opt`
