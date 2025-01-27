@@ -695,11 +695,6 @@ require('lazy').setup({
               },
             },
           },
-          ruff_lsp = {
-            cmd = { 'ruff-lsp' },
-            filetypes = { 'python' },
-            settings = {},
-          },
           ts_ls = {},
         },
         -- Ensure the servers and tools above are installed
