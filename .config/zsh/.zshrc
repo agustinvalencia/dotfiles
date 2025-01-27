@@ -1,3 +1,5 @@
+export PATH=$PATH:/Users/eaguval/.local/bin
+export PATH=$PATH:/opt/homebrew/bin
 source $ZDOTDIR/.aliases
 source $ZDOTDIR/.zshenv
 
