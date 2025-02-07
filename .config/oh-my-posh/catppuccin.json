@@ -48,7 +48,14 @@
     {
       "alignment": "right",
       "segments" : [
-          {
+        {
+          "type": "kubectl",
+          "style": "plain",
+          "foreground": "p:blue",
+          "template": " {{if .Namespace}} ﴱ {{.Namespace}}{{end}} ",
+          "properties": {}
+        },
+        {
           "foreground": "#bc93ff",
           "properties": {
             "time_format": "15:04"

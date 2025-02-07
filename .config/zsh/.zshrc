@@ -26,12 +26,11 @@ function files() {
 # stow sync 
 function stow-sync() {
 	cd $HOME/dotfiles/
-	stow --restow  
+	stow --restow $1 
 	cd -
 }
 
 function reload-zsh() {
-	stow-sync
 	source $HOME/.zshrc
 }
 
