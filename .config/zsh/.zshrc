@@ -4,10 +4,14 @@ source $ZDOTDIR/.aliases
 source $ZDOTDIR/.zshenv
 
 eval "$(zoxide init zsh)"
+eval "$(fzf --zsh)"
 
-# arrow history search
-bindkey '^[[A' up-line-or-search
-bindkey '^[[B' down-line-or-search
+# Enable history search with up/down arrows
+bindkey '^[[A' history-search-backward
+bindkey '^[[B' history-search-forward
+
+# Use Ctrl+R for fuzzy history search via fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # TUI for file navigator
 function files() {
@@ -22,13 +26,17 @@ function files() {
 # stow sync 
 function stow-sync() {
 	cd $HOME/dotfiles/
-	stow . 
+	stow --restow  
 	cd -
 }
 
+function reload-zsh() {
+	stow-sync
+	source $HOME/.zshrc
+}
 
 # prompt line
 eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/catppuccin.json)"
 
 # Zathura
-export DBUS_SESSION_BUS_ADDRESS="unix:path=$DBUS_LAUNCHD_SESSION_BUS_SOCKET"
+#export DBUS_SESSION_BUS_ADDRESS="unix:path=$DBUS_LAUNCHD_SESSION_BUS_SOCKET"
