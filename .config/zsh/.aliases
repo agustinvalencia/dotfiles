@@ -5,6 +5,8 @@ alias tree='eza --tree --color --icons=always'
 alias vim='nvim' 
 alias cd='z'
 
+alias ga='git add .'
+alias gs='git status'
 alias gpl='git pull'
 alias gps='git push'
 alias gcm='git commit -m'
