@@ -10,8 +10,10 @@ eval "$(fzf --zsh)"
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
 
+
 # Use Ctrl+R for fuzzy history search via fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 
 # TUI for file navigator
 function files() {
@@ -23,6 +25,7 @@ function files() {
 	rm -f -- "$tmp"
 }
 
+
 # stow sync 
 function stow-sync() {
 	cd $HOME/dotfiles/
@@ -30,9 +33,10 @@ function stow-sync() {
 	cd -
 }
 
-function reload-zsh() {
-	source $HOME/.zshrc
-}
+
+function reload-nix() { darwin-rebuild switch --flake $HOME/nix#mini }
+
+function reload-zsh() { source $HOME/.zshrc }
 
 # prompt line
 eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/catppuccin.json)"
