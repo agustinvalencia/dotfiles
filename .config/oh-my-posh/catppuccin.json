@@ -5,8 +5,9 @@
         "closer": "p:os",
         "pink": "#F4B8E4",
         "lavender": "#bc93ff",
-      "lightgray": "#BABBF1",
-        "blue":  "#8CAAEE"
+        "lightgray": "#BABBF1",
+        "blue":  "#8CAAEE",
+        "yellow": "#EEE38C"
   },
   "blocks": [
     {
@@ -56,14 +57,21 @@
           "properties": {}
         },
         {
+          "type": "python", 
+          "style": "plain",
+          "foreground": "p:yellow",
+          "template": "{{ if .Venv }} {{ .Venv }}  {{ .Full }} {{ end }}",
+          "display_mode": "files"
+        },
+        {
           "foreground": "#bc93ff",
           "properties": {
             "time_format": "15:04"
           },
           "style": "plain",
-          "template": " {{ .CurrentDate | date .Format }} ",
+          "template": "  {{ .CurrentDate | date .Format }} ",
           "type": "time"
-        }
+        } 
       ],
       "type": "prompt"
     },
