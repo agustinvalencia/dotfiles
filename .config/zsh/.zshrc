@@ -6,11 +6,9 @@ source $ZDOTDIR/.zshenv
 eval "$(zoxide init zsh)"
 eval "$(fzf --zsh)"
 
-
 # Enable history search with up/down arrows
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
-
 
 # TUI for file navigator
 function files() {
@@ -22,21 +20,19 @@ function files() {
 	rm -f -- "$tmp"
 }
 
-
-# stow sync 
+# stow sync
 function stow-sync() {
 	cd $HOME/dotfiles/
-	stow --restow $1 
+	stow --restow $1
 	cd -
 }
 
-
-function reload-nix() { 
-	darwin-rebuild switch --flake $HOME/nix#mini 
+function reload-nix() {
+	darwin-rebuild switch --flake $HOME/nix#mini
 }
 
-function reload-zsh() { 
-	source $HOME/.zshrc 
+function reload-zsh() {
+	source $HOME/.zshrc
 }
 
 # prompt line
