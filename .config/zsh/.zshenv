@@ -1,6 +1,7 @@
 # Environment variables
 export EDITOR=nvim
 export VISUAL="$EDITOR"
+export PATH=$HOME/.local/bin:$PATH
 
 # this only applies to work
 if [ -f "$HOME/.cargo/env" ]; then 
