@@ -19,6 +19,7 @@ function files() {
 	fi
 	rm -f -- "$tmp"
 }
+alias fs='files'
 
 # stow sync
 function stow-sync() {
