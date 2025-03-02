@@ -59,10 +59,6 @@ if not vim.g.vscode then
   -- shows code symbols in a separate pane
   vim.keymap.set('n', '<leader>cs', '<cmd>AerialToggle!<cr>', { desc = '[C]ode [S]ymbols' })
 
-  -- Obsidian
-  vim.keymap.set('n', '<leader>ot', '<cmd>ObsidianToday<cr>', { desc = '[O]bsidian [T]oday' })
-  vim.keymap.set('n', '<leader>on', '<cmd>ObsidianNewFromTemplate<cr>', { desc = '[O]bsidian [N]ew from Template' })
-
   --Custom diagnostics
   vim.keymap.set('n', '<leader>cdf', vim.diagnostic.open_float, { desc = '[C]ode [D]iagnostics [F]ull' })
 else
