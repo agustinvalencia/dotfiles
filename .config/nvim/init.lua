@@ -919,6 +919,10 @@ require('lazy').setup({
       lazy = '💤 ',
     },
   },
+}, {
+  git = {
+    url_format = 'git@github.com:%s.git',
+  },
 })
 --
 if not vim.g.vscode then
