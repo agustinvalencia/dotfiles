@@ -9,6 +9,7 @@ local function custom_lua_line()
       theme = 'catppuccin',
       component_separators = '|',
       section_separators = { left = '', right = '' },
+      globalstatus = true,
     },
     sections = {
       lualine_a = {
@@ -16,8 +17,23 @@ local function custom_lua_line()
       },
       -- lualine_b = { 'branch', 'diagnostics', 'searchcount', 'selectioncount' },
       lualine_b = {
+        { 'branch' },
+      },
+      lualine_c = {
+        {
+          function()
+            return 'Buffers: ' .. #vim.fn.getbufinfo { buflisted = 1 }
+          end,
+          icon = ' ', -- Icon to represent buffers
+        },
+      },
+      lualine_x = {},
+      lualine_y = { 'filetype' },
+      lualine_z = {
         {
           'filename',
+          separator = { right = '' },
+          left_padding = 1,
           path = 1, -- 1: Relative path
           shorting_target = 40, -- Shortens the path if it's longer than 40 characters
           symbols = {
@@ -27,25 +43,12 @@ local function custom_lua_line()
           },
         },
       },
-      lualine_c = {},
-      lualine_x = {
-        {
-          function()
-            return 'Buffers: ' .. #vim.fn.getbufinfo { buflisted = 1 }
-          end,
-          icon = ' ', -- Icon to represent buffers
-        },
-      },
-      lualine_y = { 'filetype' },
-      lualine_z = {
-        { 'filename', separator = { right = '' }, left_padding = 1 },
-      },
     },
     inactive_sections = {
       lualine_a = {},
       lualine_b = {},
-      lualine_c = { 'filename' },
-      lualine_x = { 'location' },
+      lualine_c = {},
+      lualine_x = {},
       lualine_y = {},
       lualine_z = {},
     },

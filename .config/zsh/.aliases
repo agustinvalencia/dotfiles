@@ -2,10 +2,15 @@ alias ls='eza --color'
 alias ll='eza -l --color --header --git --icons=always'
 alias la='eza -l -a --color --header --git --icons=always'
 alias tree='eza --tree --color --icons=always' 
+
+alias cat='bat'
 alias vim='nvim' 
+
 alias cd='z'
 alias '..'='z ..'
-alias '...'='z ...'
+alias '...'='z ../..'
+alias '....'='z ../../..'
+
 
 alias ga='git add .'
 alias gs='git status'
