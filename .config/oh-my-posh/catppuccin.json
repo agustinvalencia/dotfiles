@@ -92,9 +92,10 @@
   "final_space": true,
   "version": 3,
   "transient_prompt" : {
-    "template": " ", 
+    "template": " {{- .Segments.Time.Text -}} > ",
     "background": "transparent",
     "foreground": "p:blue",
+    "filler": "_",
     "newline": true
   }
 }
