@@ -658,6 +658,12 @@ require('lazy').setup({
               modifyLineBreaks = false,
             },
           },
+          tinymist = {
+            settings = {
+              formatterModer = 'typstyle',
+              exportPdf = 'onType',
+            },
+          },
         },
         -- Ensure the servers and tools above are installed
         --  To check the current status of installed tools and/or manually install

@@ -42,4 +42,6 @@ eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/catppuccin.json)"
 # Zathura
 #export DBUS_SESSION_BUS_ADDRESS="unix:path=$DBUS_LAUNCHD_SESSION_BUS_SOCKET"
 
+export PATH=/Applications/Skim.app/Contents/MacOS:$PATH
+
 . "$HOME/.local/bin/env"

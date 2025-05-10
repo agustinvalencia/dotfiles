@@ -2,7 +2,8 @@ shell-integration = zsh
 
 # appeareance
 theme = catppuccin-macchiato
-macos-titlebar-style = hidden
+macos-titlebar-style = transparent
+macos-titlebar-proxy-icon = hidden
 cursor-style = block_hollow
 cursor-style-blink = true
 background-opacity = 0.9
