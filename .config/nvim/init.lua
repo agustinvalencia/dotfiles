@@ -1,5 +1,9 @@
 -- init.lua
--- 1) Clone lazy.nvim if it's not installed
+
+-- 1) load configs
+require("configs")
+
+-- 2) Clone lazy.nvim if it's not installed
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -8,14 +12,11 @@ if not vim.loop.fs_stat(lazypath) then
     "--branch=stable", lazypath,
   })
 end
--- 2) Prepend to runtime path
+
+-- 3) Prepend to runtime path
 vim.opt.rtp:prepend(lazypath)
 -- opts.rocks.hererocks = false
 
--- 3) Import all specs under lua/plugins/
+-- 4) Import all specs under lua/plugins/
 require("lazy").setup({ spec = { { import = "plugins" } } })
 
--- 4) General settings
-vim.opt.number = true
-vim.g.mapleader = ' '
-vim.g.have_nerd_font = true

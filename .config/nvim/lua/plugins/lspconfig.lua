@@ -3,7 +3,10 @@ return {
     {
       "neovim/nvim-lspconfig",
       dependencies = {
+      { 'williamboman/mason.nvim', config = true },
         "williamboman/mason-lspconfig.nvim",
+         'WhoIsSethDaniel/mason-tool-installer.nvim',
+        { 'j-hui/fidget.nvim', opts = {} },
         "hrsh7th/cmp-nvim-lsp",
       },
       config = function()
@@ -16,8 +19,11 @@ return {
           vim.keymap.set("n", "K",  vim.lsp.buf.hover,      opts)
           vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
         end
-  
+
+        -- python
         lspconfig.pyright.setup({ capabilities=caps, on_attach=on_attach })
+
+        -- typescript
         lspconfig.ts_ls.setup({ capabilities=caps, on_attach=on_attach })
       end,
     },
