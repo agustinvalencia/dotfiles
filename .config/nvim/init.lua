@@ -1,5 +1,9 @@
 -- init.lua
 
+if vim.env.VSCODE then
+    vim.g.vscode = true
+end
+
 -- 1) load configs
 require("configs")
 
@@ -19,4 +23,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- 4) Import all specs under lua/plugins/
 require("lazy").setup({ spec = { { import = "plugins" } } })
+
+-- 5) Extra keymaps
+require("keymaps")
 

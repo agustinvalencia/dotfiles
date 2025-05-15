@@ -53,7 +53,7 @@
           "type": "kubectl",
           "style": "plain",
           "foreground": "p:blue",
-          "template": " {{if .Namespace}} ﴱ {{.Namespace}}{{end}} ",
+          "template": " {{if .Namespace}} 󰠳 {{.Namespace}}{{end}} ",
           "properties": {}
         },
         {

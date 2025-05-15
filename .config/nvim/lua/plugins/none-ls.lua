@@ -1,6 +1,7 @@
 -- none-ls.lua
+
 return {
-    {
+    enabled = false,
       "nvimtools/none-ls.nvim",
       dependencies = { "jay-babu/mason-null-ls.nvim" },
       config = function()
@@ -24,5 +25,4 @@ return {
           end,
         })
       end,
-    },
-  }
+    }
