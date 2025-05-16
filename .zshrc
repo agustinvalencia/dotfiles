@@ -23,6 +23,7 @@ alias gpl='git pull'
 alias gps='git push'
 alias gcm='git commit -m'
 
+alias kube='kubectl'
 
 function reload-zsh() {
 	source $HOME/.zshrc
