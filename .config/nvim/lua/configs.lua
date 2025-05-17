@@ -39,6 +39,14 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Format on save
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern="*",
+    callback = function(args)
+        require("conform").format({ bufnr = args.buf })
+    end
+})
+
 -- HACK for skim+typst
 vim.api.nvim_create_user_command('OpenPdf', function()
   local filepath = vim.api.nvim_buf_get_name(0)
@@ -47,3 +55,4 @@ vim.api.nvim_create_user_command('OpenPdf', function()
     vim.system { 'skim', pdf_path }
   end
 end, {})
+
