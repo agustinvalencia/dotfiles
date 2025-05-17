@@ -1,7 +1,12 @@
-. "$HOME/.cargo/env"
+if [ -f "$HOME/.cargo/env" ]; then
+    . "$HOME/.cargo/env"
+fi
+
 export EDITOR=nvim
 export VISUAL="$EDITOR"
 export PATH=/Users/eaguval/repositories/getting-started/user-scripts/:$PATH
+export PATH="$HOME/.cargo/bin/":$PATH
+
 setopt HIST_IGNORE_SPACE
 
 alias ls='eza --color -a '
@@ -9,6 +14,7 @@ alias ll='eza --color -l --header --git --icons=always'
 alias la='eza --color -l -a --header --git --icons=always'
 alias tree='eza --tree --color --icons=always' 
 
+alias zj='zellij'
 alias cat='bat'
 alias vim='nvim' 
 
@@ -26,13 +32,21 @@ alias gcm='git commit -m'
 
 alias kube='kubectl'
 
+alias edit-zsh='nvim $HOME/.zshrc'
+alias edit-nix='nvim $HOME/nix/flake.nix'
+alias edit-zj='nvim $HOME/.config/zellij/config.kdl'
+
 function reload-zsh() {
 	source $HOME/.zshrc
 }
 
+function reload-nix() {
+	darwin-rebuild switch --flake $HOME/nix#mini
+}
+
 function stow-sync() {
 	cd $HOME/dotfiles/
-	stow --restow $1
+	stow --restow .
 	cd -
 }
 
