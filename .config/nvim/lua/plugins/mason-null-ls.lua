@@ -1,15 +1,13 @@
 -- mason-null-ls.lua
 return {
-  enabled=false,
-  "jay-babu/mason-null-ls.nvim",
+  'jayp0521/mason-null-ls.nvim',
   dependencies = {
-    "williamboman/mason.nvim",
-    "nvimtools/none-ls.nvim",
+    'williamboman/mason.nvim',
   },
   config = function()
-    require("mason-null-ls").setup({
-      ensure_installed = { "ruff", "pyright"},
-      automatic_installation = true
-    })
+    require('mason-null-ls').setup {
+      ensure_installed = { 'ruff', 'pyright' },
+      automatic_installation = true,
+    }
   end,
 }

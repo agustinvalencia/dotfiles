@@ -17,6 +17,7 @@ alias '..'='z ..'
 alias '...'='z ../..'
 alias '....'='z ../../..'
 
+alias lg='lazygit'
 alias ga='git add .'
 alias gs='git status'
 alias gpl='git pull'

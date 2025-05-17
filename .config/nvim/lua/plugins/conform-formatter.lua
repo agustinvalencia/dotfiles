@@ -9,7 +9,7 @@ return {
       function()
         require('conform').format { async = true }
       end,
-      mode = '',
+      mode = 'n',
       desc = 'Format buffer',
     },
   },
@@ -21,7 +21,7 @@ return {
     formatters_by_ft = {
       lua = { 'stylua' },
       python = { 'ruff' },
-      javascript = { 'prettierd', 'prettier', stop_after_first = true },
+      javascript = { 'prettier' },
     },
     -- Set default options
     default_format_opts = {
