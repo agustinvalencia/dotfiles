@@ -17,6 +17,12 @@ vim.o.wrap = true -- wrap long lines
 vim.o.linebreak = true -- set the wrap breaks to not break words
 vim.opt.cursorline = true -- Show which line your cursor is on
 
+-- Sets how neovim will display certain whitespace characters in the editor.
+--  See `:help 'list'`
+--  and `:help 'listchars'`
+vim.opt.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
 -- Sync clipboard between OS and Neovim.
 vim.schedule(function()
   vim.opt.clipboard = 'unnamedplus'
