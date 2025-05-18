@@ -2,6 +2,10 @@ if [ -f "$HOME/.cargo/env" ]; then
     . "$HOME/.cargo/env"
 fi
 
+if [ -f "$HOME/.zshen" ]; then
+    . "$HOME/.zshenv"
+fi
+
 export EDITOR=nvim
 export VISUAL="$EDITOR"
 export PATH=/Users/eaguval/repositories/getting-started/user-scripts/:$PATH
