@@ -1,21 +1,18 @@
--- whichkey.lua
-if vim.g.vscode then 
-    return {}
-end
-
 return {
+  "folke/which-key.nvim",
+  event = "VeryLazy",
+  opts = {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  },
+  keys = {
     {
-      "folke/which-key.nvim",
-      event = "VeryLazy",
-      config = function()
-        local wk = require("which-key")
-        wk.setup()  -- use defaults
-        wk.register({
-          r = {
-            name = "Refactor",
-            n = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename Symbol" },
-          },
-        }, { prefix = "<leader>" })
+      "<leader>?",
+      function()
+        require("which-key").show({ global = false })
       end,
+      desc = "Buffer Local Keymaps (which-key)",
     },
-  }
+  },
+}

@@ -1,20 +1,23 @@
 -- init.lua
 
 if vim.env.VSCODE then
-    vim.g.vscode = true
+  vim.g.vscode = true
 end
 
 -- 1) load configs
-require("configs")
+require 'configs'
 
 -- 2) Clone lazy.nvim if it's not installed
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git", "clone", "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", lazypath,
-  })
+  vim.fn.system {
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable',
+    lazypath,
+  }
 end
 
 -- 3) Prepend to runtime path
@@ -22,8 +25,10 @@ vim.opt.rtp:prepend(lazypath)
 -- opts.rocks.hererocks = false
 
 -- 4) Import all specs under lua/plugins/
-require("lazy").setup({ spec = { { import = "plugins" } } })
+require('lazy').setup {
+  spec = { import = 'plugins' },
+  rocks = { hererocks = false, enabled = true },
+}
 
 -- 5) Extra keymaps
-require("keymaps")
-
+require 'keymaps'
