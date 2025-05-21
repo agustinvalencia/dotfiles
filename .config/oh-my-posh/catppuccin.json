@@ -1,18 +1,18 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "palette": {
-        "os": "#ACB0BE",
-        "closer": "p:os",
-        "pink": "#F4B8E4",
-        "lavender": "#bc93ff",
-        "lightgray": "#BABBF1",
-        "blue":  "#8CAAEE",
-        "yellow": "#EEE38C"
+    "os": "#ACB0BE",
+    "closer": "p:os",
+    "pink": "#F4B8E4",
+    "lavender": "#bc93ff",
+    "lightgray": "#BABBF1",
+    "blue": "#8CAAEE",
+    "yellow": "#EEE38C"
   },
   "blocks": [
     {
       "alignment": "left",
-      "newline": true, 
+      "newline": true,
       "segments": [
         {
           "foreground": "p:pink",
@@ -48,7 +48,7 @@
     },
     {
       "alignment": "right",
-      "segments" : [
+      "segments": [
         {
           "type": "kubectl",
           "style": "plain",
@@ -57,21 +57,12 @@
           "properties": {}
         },
         {
-          "type": "python", 
+          "type": "python",
           "style": "plain",
           "foreground": "p:yellow",
           "template": "{{ if .Venv }} {{ .Venv }}  {{ .Full }} {{ end }}",
           "display_mode": "files"
-        },
-        {
-          "foreground": "#bc93ff",
-          "properties": {
-            "time_format": "15:04"
-          },
-          "style": "plain",
-          "template": "  {{ .CurrentDate | date .Format }} ",
-          "type": "time"
-        } 
+        }
       ],
       "type": "prompt"
     },
@@ -80,7 +71,7 @@
       "newline": true,
       "segments": [
         {
-          "foreground" : "p:pink",
+          "foreground": "p:pink",
           "style": "plain",
           "template": " ",
           "type": "text"
@@ -91,7 +82,7 @@
   ],
   "final_space": true,
   "version": 3,
-  "transient_prompt" : {
+  "transient_prompt": {
     "template": " {{- .Segments.Time.Text -}} > ",
     "background": "transparent",
     "foreground": "p:blue",
@@ -99,4 +90,3 @@
     "newline": true
   }
 }
-
