@@ -41,7 +41,9 @@ alias edit-nix='nvim $HOME/nix/flake.nix'
 alias edit-zj='nvim $HOME/.config/zellij/config.kdl'
 
 function reload-zsh() {
+    echo "Reloading $HOME/.zshrc ... "
 	source $HOME/.zshrc
+    echo "Done"
 }
 
 function reload-nix() {
@@ -52,6 +54,15 @@ function stow-sync() {
 	cd $HOME/dotfiles/
 	stow --restow .
 	cd -
+}
+
+function kubeconnect() {
+  local pod 
+
+  pod=$(kubectl get pods  --no-headers -o custom-columns=":metadata.name" | fzf --header="Select Pod")
+  [ -z "$pod" ] && return 1
+
+  kubectl exec -it "$pod" -- /bin/bash
 }
 
 function files() {
