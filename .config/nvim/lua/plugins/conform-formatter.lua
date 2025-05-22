@@ -5,12 +5,12 @@ return {
   keys = {
     {
       -- Customize or remove this keymap to your liking
-      "<leader>f",
+      "<leader>cf",
       function()
         require("conform").format({ async = true })
       end,
       mode = "n",
-      desc = "Format buffer",
+      desc = "[C]ode [F]ormat",
     },
   },
   -- This will provide type hinting with LuaLS

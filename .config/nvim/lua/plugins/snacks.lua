@@ -9,6 +9,7 @@ return {
     explorer = { enabled = true },
     indent = { enabled = true },
     input = { enabled = true, win = { style = "input" } },
+    image = { enabled = true },
     dim =
       ---@class snacks.dim.Config
       {
@@ -26,7 +27,7 @@ return {
           easing = "outQuad",
           duration = {
             step = 20, -- ms per step
-            total = 300, -- maximum duration
+            total = 200, -- maximum duration
           },
         },
         -- what buffers to dim
@@ -38,7 +39,58 @@ return {
       enabled = true,
       timeout = 2000,
     },
-    picker = { enabled = true },
+    terminal = {
+      enabled = false,
+      win = {
+        position = "float",
+        border = "rounded",
+        backdrop = 60,
+        height = 0.9,
+        width = 0.9,
+        title_pos = "center",
+      },
+    },
+    picker = {
+      enabled = true,
+      previewers = {
+        diff = { builtin = false },
+        git = { builtin = false },
+      },
+      debug = { scores = false, leaks = false, explorer = false, files = false, proc = true },
+      sources = {
+        explorer = {
+          layout = {
+            preset = "sidebar",
+            preview = { main = true, enabled = false },
+          },
+        },
+        files_with_symbols = {
+          multi = { "files", "lsp_symbols" },
+          filter = {
+            ---@param p snacks.Picker
+            ---@param filter snacks.picker.Filter
+            transform = function(p, filter)
+              local symbol_pattern = filter.pattern:match("^.-@(.*)$")
+              -- store the current file buffer
+              if filter.source_id ~= 2 then
+                local item = p:current()
+                if item and item.file then
+                  filter.meta.buf = vim.fn.bufadd(item.file)
+                end
+              end
+
+              if symbol_pattern and filter.meta.buf then
+                filter.pattern = symbol_pattern
+                filter.current_buf = filter.meta.buf
+                filter.source_id = 2
+              else
+                filter.source_id = 1
+              end
+            end,
+          },
+        },
+      },
+    },
     quickfile = { enabled = true },
     scope = { enabled = true },
     scroll = { enabled = true },
@@ -57,8 +109,8 @@ return {
     { "<leader>,", function() Snacks.picker.buffers() end, desc = "Buffers" },
     { "<leader>/", function() Snacks.picker.grep() end, desc = "Grep" },
     { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
-    { "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
-    { "<leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
+    { "<leader>n", function() Snacks.picker.notifications() end, desc = "[N]otification History" },
+    { "<leader>e", function() Snacks.explorer() end, desc = "File [E]xplorer" },
     -- find
     { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
     { "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
@@ -120,7 +172,7 @@ return {
     { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Git Browse", mode = { "n", "v" } },
     { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
     { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
-    { "<c-/>",      function() Snacks.terminal() end, desc = "Toggle Terminal" },
+    { "<leader>tt",      function() Snacks.terminal() end, desc = "Toggle Terminal" },
     { "<c-_>",      function() Snacks.terminal() end, desc = "which_key_ignore" },
     { "]]",         function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" } },
     { "[[",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" } },
