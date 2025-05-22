@@ -1,3 +1,5 @@
 .DS_Store
 .zsh_history
-.zcompdump*
+.config/tmux/plugins/
+zcompdump*
+.tmux/plugins/tpm
