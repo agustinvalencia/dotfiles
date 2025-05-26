@@ -19,10 +19,16 @@ return {
   config = function()
     require("catppuccin").setup({
 
-      flavour = "mocha",
+      flavour = "macchiato",
       transparent_background = true,
       styles = {
         comments = { "italic" },
+        conditionals = { "italic" },
+      },
+      dim_inactive = {
+        enabled = false, -- dims the background color of inactive window
+        shade = "dark",
+        percentage = 0.15, -- percentage of the shade to apply to the inactive window
       },
 
       markdown = true,
@@ -32,6 +38,7 @@ return {
       default_integrations = true,
       custom_highlights = function(colors)
         return {
+          NvimTreeNormal = { fg = colors.none },
           Comment = { fg = colors.flamingo },
           ["@keyword"] = { fg = colors.pink },
           ["@keyword.import"] = { fg = colors.pink },
@@ -49,6 +56,7 @@ return {
         }
       end,
       integrations = {
+        treesitter = true,
         mini = {
           enabled = true,
           indentscope_color = "",
