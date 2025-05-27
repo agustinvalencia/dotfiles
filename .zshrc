@@ -1,5 +1,6 @@
 if [ -f "$HOME/.cargo/env" ]; then
     . "$HOME/.cargo/env"
+    export PATH="$HOME/.cargo/bin/":$PATH
 fi
 
 if [ -f "$HOME/.zshen" ]; then
@@ -9,7 +10,6 @@ fi
 export EDITOR=nvim
 export VISUAL="$EDITOR"
 export PATH=/Users/eaguval/repositories/getting-started/user-scripts/:$PATH
-export PATH="$HOME/.cargo/bin/":$PATH
 
 setopt HIST_IGNORE_SPACE
 
@@ -18,7 +18,6 @@ alias ll='eza --color -l --header --git --icons=always'
 alias la='eza --color -l -a --header --git --icons=always'
 alias tree='eza --tree --color --icons=always' 
 
-alias zj='zellij'
 alias cat='bat'
 alias vim='nvim' 
 
