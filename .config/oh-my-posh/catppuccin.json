@@ -13,19 +13,22 @@
     {
       "alignment": "left",
       "newline": true,
+      "type": "prompt",
       "segments": [
         {
+          "type": "path",
           "foreground": "p:pink",
           "properties": {
             "folder_icon": " ",
             "home_icon": " ",
-            "style": "agnoster_short"
+            "style": "mixed",
+            "mixed_threshold": 3
           },
           "style": "plain",
-          "template": "{{ .Path }} ",
-          "type": "path"
+          "template": "{{ .Path }} "
         },
         {
+          "type": "git",
           "foreground": "p:lavender",
           "properties": {
             "branch_icon": "\ue725 ",
@@ -40,11 +43,9 @@
             "tag_icon": "\uf412 "
           },
           "template": "{{ .HEAD }} ",
-          "style": "plain",
-          "type": "git"
+          "style": "plain"
         }
-      ],
-      "type": "prompt"
+      ]
     },
     {
       "alignment": "right",
@@ -83,7 +84,7 @@
   "final_space": true,
   "version": 3,
   "transient_prompt": {
-    "template": " {{- .Segments.Time.Text -}} > ",
+    "template": "> ",
     "background": "transparent",
     "foreground": "p:blue",
     "filler": "_",

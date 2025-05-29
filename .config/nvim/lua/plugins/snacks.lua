@@ -10,7 +10,6 @@ return {
     indent = { enabled = true },
     input = { enabled = true, win = { style = "input" } },
     image = { enabled = true },
-    dim = { enabled = true },
     notifier = {
       enabled = true,
       timeout = 2000,
@@ -20,9 +19,8 @@ return {
       win = {
         position = "float",
         border = "rounded",
-        backdrop = 60,
-        height = 0.9,
-        width = 0.9,
+        height = 0.8,
+        width = 0.8,
         title_pos = "center",
       },
     },
@@ -32,7 +30,6 @@ return {
         diff = { builtin = false },
         git = { builtin = false },
       },
-      debug = { scores = false, leaks = false, explorer = false, files = false, proc = true },
       sources = {
         explorer = {
           layout = {
@@ -87,21 +84,23 @@ return {
     { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
     { "<leader>n", function() Snacks.picker.notifications() end, desc = "[N]otification History" },
     { "<leader>e", function() Snacks.explorer() end, desc = "File [E]xplorer" },
+        
     -- find
     { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
     { "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
     { "<leader>ff", function() Snacks.picker.files() end, desc = "Find Files" },
-    { "<leader>fg", function() Snacks.picker.git_files() end, desc = "Find Git Files" },
-    { "<leader>fp", function() Snacks.picker.projects() end, desc = "Projects" },
+    -- { "<leader>fg", function() Snacks.picker.git_files() end, desc = "Find Git Files" },
+    -- { "<leader>fp", function() Snacks.picker.projects() end, desc = "Projects" },
     { "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent" },
+
     -- git
-    { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
-    { "<leader>gl", function() Snacks.picker.git_log() end, desc = "Git Log" },
-    { "<leader>gL", function() Snacks.picker.git_log_line() end, desc = "Git Log Line" },
-    { "<leader>gs", function() Snacks.picker.git_status() end, desc = "Git Status" },
-    { "<leader>gS", function() Snacks.picker.git_stash() end, desc = "Git Stash" },
-    { "<leader>gd", function() Snacks.picker.git_diff() end, desc = "Git Diff (Hunks)" },
-    { "<leader>gf", function() Snacks.picker.git_log_file() end, desc = "Git Log File" },
+    -- { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
+    -- { "<leader>gl", function() Snacks.picker.git_log() end, desc = "Git Log" },
+    -- { "<leader>gL", function() Snacks.picker.git_log_line() end, desc = "Git Log Line" },
+    -- { "<leader>gs", function() Snacks.picker.git_status() end, desc = "Git Status" },
+    -- { "<leader>gS", function() Snacks.picker.git_stash() end, desc = "Git Stash" },
+    -- { "<leader>gd", function() Snacks.picker.git_diff() end, desc = "Git Diff (Hunks)" },
+    -- { "<leader>gf", function() Snacks.picker.git_log_file() end, desc = "Git Log File" },
     -- Grep
     { "<leader>sb", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
     { "<leader>sB", function() Snacks.picker.grep_buffers() end, desc = "Grep Open Buffers" },
@@ -138,7 +137,7 @@ return {
     { "<leader>ss", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
     { "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
     -- Other
-    { "<leader>z",  function() Snacks.zen() end, desc = "Toggle Zen Mode" },
+    -- { "<leader>z",  function() Snacks.zen() end, desc = "Toggle Zen Mode" },
     { "<leader>Z",  function() Snacks.zen.zoom() end, desc = "Toggle Zoom" },
     { "<leader>.",  function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
     { "<leader>S",  function() Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
@@ -187,17 +186,17 @@ return {
 
         -- Create some toggle mappings
         -- stylua: ignore start
-        Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
+        -- Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
         Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
         Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>uL")
         Snacks.toggle.diagnostics():map("<leader>ud")
         Snacks.toggle.line_number():map("<leader>ul")
         Snacks.toggle.option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 }):map("<leader>uc")
-        Snacks.toggle.treesitter():map("<leader>uT")
-        Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
+        -- Snacks.toggle.treesitter():map("<leader>uT")
+        -- Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
         Snacks.toggle.inlay_hints():map("<leader>uh")
         Snacks.toggle.indent():map("<leader>ug")
-        Snacks.toggle.dim():map("<leader>uD")
+        -- Snacks.toggle.dim():map("<leader>uD")
         -- stylua: ignore end
       end,
     })
