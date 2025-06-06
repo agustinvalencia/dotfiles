@@ -13,6 +13,14 @@ export PATH=/Users/eaguval/repositories/getting-started/user-scripts/:$PATH
 
 setopt HIST_IGNORE_SPACE
 
+# using arrows to history-complete command
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey '^[[A' up-line-or-beginning-search
+bindkey '^[[B' down-line-or-beginning-search
+
 alias ls='eza --color -a '
 alias ll='eza --color -l --header --git --icons=always'
 alias la='eza --color -l -a --header --git --icons=always'

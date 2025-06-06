@@ -25,6 +25,7 @@ return {
       ["javascriptreact"] = { "prettier" },
       ["typescript"] = { "prettier" },
       ["typescriptreact"] = { "prettier" },
+      ["json"] = { "prettier" },
     },
     -- Set default options
     default_format_opts = {
