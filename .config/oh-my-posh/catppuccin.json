@@ -84,9 +84,9 @@
   "final_space": true,
   "version": 3,
   "transient_prompt": {
-    "template": "> ",
+    "template": " ",
     "background": "transparent",
-    "foreground": "p:blue",
+    "foreground": "p:lavender",
     "filler": "_",
     "newline": true
   }

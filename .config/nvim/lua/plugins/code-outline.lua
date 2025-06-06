@@ -4,6 +4,7 @@ return {
   opts = {
     default_direction = "right",
     placement = "edge",
+    attach_mode = "global",
   },
   -- Optional dependencies
   dependencies = {
