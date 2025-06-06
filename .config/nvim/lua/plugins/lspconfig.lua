@@ -25,14 +25,6 @@ return {
 
       -- typescript
       lspconfig.ts_ls.setup({ capabilities = caps, on_attach = on_attach })
-      -- tinymist
-      lspconfig.tinymist.setup({
-        settings = {
-          formatterMode = "typstyle",
-          exportPdf = "onType",
-          semanticTokens = "disable",
-        },
-      })
     end,
   },
 }

@@ -3,7 +3,7 @@ if [ -f "$HOME/.cargo/env" ]; then
     export PATH="$HOME/.cargo/bin/":$PATH
 fi
 
-if [ -f "$HOME/.zshen" ]; then
+if [ -f "$HOME/.zshenv" ]; then
     . "$HOME/.zshenv"
 fi
 
@@ -54,7 +54,7 @@ function reload-zsh() {
 }
 
 function reload-nix() {
-	darwin-rebuild switch --flake $HOME/nix#mini
+	sudo darwin-rebuild switch --flake $HOME/nix#mini
 }
 
 function stow-sync() {
