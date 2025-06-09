@@ -2,6 +2,10 @@ return {
   cmd = { "tinymist" },
   filetypes = { "typst" },
   formatterMode = "typstyle",
-  semanticTokens = "disable",
-  exportPdf = "onSave",
+  formatterPrintWidth = 100,
+  formatterIndentSize = 4,
+  semanticTokens = "enable",
+  exportTarget = "paged",
+  exportPdf = "onType",
+  capabilities = {},
 }

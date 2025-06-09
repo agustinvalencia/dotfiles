@@ -16,6 +16,7 @@ vim.o.cmdheight = 0 -- Do not show status bar
 vim.o.wrap = true -- wrap long lines
 vim.o.linebreak = true -- set the wrap breaks to not break words
 vim.opt.cursorline = true -- Show which line your cursor is on
+vim.opt.spell = true
 
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`

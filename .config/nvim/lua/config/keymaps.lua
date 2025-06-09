@@ -23,3 +23,5 @@ end, { desc = "[T]erminal [H]orizontal" })
 -- easy close
 vim.keymap.set({ "n", "t" }, "<leader>qq", "<cmd>q<cr>", { desc = "[Q]uick [Q]uit" })
 vim.keymap.set({ "n", "t" }, "<leader>xx", "<cmd>xa!<cr>", { desc = "[Q]uick save and quit [X]" })
+
+vim.keymap.set("n", "<leader>op", "<cmd>OpenPdf<cr>", { desc = "[O]pen [P]df" })

@@ -26,6 +26,7 @@ return {
       ["typescript"] = { "prettier" },
       ["typescriptreact"] = { "prettier" },
       ["json"] = { "prettier" },
+      ["typst"] = { "tinymist" },
     },
     -- Set default options
     default_format_opts = {

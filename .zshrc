@@ -7,6 +7,10 @@ if [ -f "$HOME/.zshenv" ]; then
     . "$HOME/.zshenv"
 fi
 
+if [ -d "/Applications/Skim.app/Contents/MacOS/" ]; then
+    alias skim="open -a Skim.app"
+fi
+
 export EDITOR=nvim
 export VISUAL="$EDITOR"
 export PATH=/Users/eaguval/repositories/getting-started/user-scripts/:$PATH
