@@ -21,7 +21,7 @@ return {
       end
 
       -- python
-      lspconfig.pyright.setup({ capabilities = caps, on_attach = on_attach })
+      -- lspconfig.pyright.setup({ capabilities = caps, on_attach = on_attach })
 
       -- typescript
       lspconfig.ts_ls.setup({ capabilities = caps, on_attach = on_attach })
