@@ -24,6 +24,9 @@ return {
       styles = {
         comments = { "italic" },
         conditionals = { "italic" },
+        loops = { "italic" },
+        keywords = { "bold" },
+        strings = { "italic" },
       },
       dim_inactive = {
         enabled = false, -- dims the background color of inactive window
@@ -38,21 +41,21 @@ return {
       default_integrations = true,
       custom_highlights = function(colors)
         return {
-          NvimTreeNormal = { fg = colors.none },
-          Comment = { fg = colors.flamingo },
-          ["@keyword"] = { fg = colors.pink },
-          ["@keyword.import"] = { fg = colors.pink },
-          ["@type"] = { fg = colors.blue },
-          ["@variable.parameter"] = { fg = colors.teal },
-          ["@comment"] = { fg = colors.surface2, style = { "italic" } },
-          ["@text.literal"] = { fg = colors.yellow },
-          ["@error"] = { fg = colors.red },
-          ["@string"] = { fg = colors.yellow },
-          ["@string.documentation"] = { fg = colors.subtext1, style = { "italic" } },
-          ["@function"] = { fg = colors.pink, bold = true },
-          ["@lsp.type.selfKeyword"] = { fg = colors.pink },
-          ["@ibl.indent.char.1"] = { fg = colors.surface2 },
-          ["@ibl.scope.char.1"] = { fg = colors.pink },
+          -- NvimTreeNormal = { fg = colors.none },
+          -- Comment = { fg = colors.flamingo },
+          -- ["@keyword"] = { fg = colors.pink },
+          -- ["@keyword.import"] = { fg = colors.pink },
+          -- ["@type"] = { fg = colors.blue },
+          -- ["@variable.parameter"] = { fg = colors.teal },
+          -- ["@comment"] = { fg = colors.surface2, style = { "italic" } },
+          -- ["@text.literal"] = { fg = colors.yellow },
+          -- ["@error"] = { fg = colors.red },
+          -- ["@string"] = { fg = colors.yellow },
+          -- ["@string.documentation"] = { fg = colors.subtext1, style = { "italic" } },
+          -- ["@function"] = { fg = colors.pink, bold = true },
+          -- ["@lsp.type.selfKeyword"] = { fg = colors.pink },
+          -- ["@ibl.indent.char.1"] = { fg = colors.surface2 },
+          -- ["@ibl.scope.char.1"] = { fg = colors.pink },
         }
       end,
       integrations = {

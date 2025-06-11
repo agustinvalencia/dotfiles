@@ -4,8 +4,10 @@ vim.lsp.enable({
   "pyright",
 })
 
+vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, opts)
+
 vim.diagnostic.config({
-  virtual_lines = true,
+  -- virtual_lines = true,
   -- virtual_text = true,
   underline = true,
   update_in_insert = false,

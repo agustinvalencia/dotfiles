@@ -1,6 +1,6 @@
 return {
   "stevearc/aerial.nvim",
-
+  enable = false,
   opts = {
     default_direction = "right",
     placement = "edge",
@@ -12,6 +12,6 @@ return {
     "nvim-tree/nvim-web-devicons",
   },
   keys = {
-    { "<leader>co", "<cmd>AerialToggle!<CR>", desc = "[C]ode [O]utline Toggle" },
+    -- { "<leader>co", "<cmd>AerialToggle!<CR>", desc = "[C]ode [O]utline Toggle" },
   },
 }

@@ -5,7 +5,37 @@ return {
   ---@type snacks.Config
   opts = {
     bigfile = { enabled = true },
-    dashboard = { enabled = true },
+    dashboard = {
+      enabled = true,
+      sections = {
+        { section = "header" },
+        {
+          pane = 2,
+          section = "terminal",
+          cmd = "echo 'NO' ",
+          height = 5,
+          padding = 1,
+        },
+        { section = "keys", gap = 1, padding = 1 },
+        { pane = 2, icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
+        { pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
+        {
+          pane = 2,
+          icon = " ",
+          title = "Git Status",
+          section = "terminal",
+          enabled = function()
+            return Snacks.git.get_root() ~= nil
+          end,
+          cmd = "git status --short --branch --renames",
+          height = 5,
+          padding = 1,
+          ttl = 5 * 60,
+          indent = 3,
+        },
+        { section = "startup" },
+      },
+    },
     explorer = { enabled = true },
     indent = { enabled = true },
     input = { enabled = true, win = { style = "input" } },
@@ -113,7 +143,7 @@ return {
     -- { "<leader>sb", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
     -- { "<leader>sc", function() Snacks.picker.command_history() end, desc = "Command History" },
     -- { "<leader>sC", function() Snacks.picker.commands() end, desc = "Commands" },
-    { "<leader>sd", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
+    --{ "<leader>cd", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
     -- { "<leader>sD", function() Snacks.picker.diagnostics_buffer() end, desc = "Buffer Diagnostics" },
     { "<leader>sh", function() Snacks.picker.help() end, desc = "Help Pages" },
     -- { "<leader>sH", function() Snacks.picker.highlights() end, desc = "Highlights" },
