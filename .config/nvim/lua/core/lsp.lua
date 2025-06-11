@@ -24,10 +24,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
 vim.lsp.enable({
   "lua_ls",
   "tinymist",
+  "pyright",
 })
 
+vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, opts)
+
 vim.diagnostic.config({
-  virtual_lines = true,
+  -- virtual_lines = true,
   -- virtual_text = true,
   underline = true,
   update_in_insert = false,
