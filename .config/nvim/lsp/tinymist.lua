@@ -1,5 +1,5 @@
 return {
-  cmd = { "tinymist" },
+  cmd = { "tinymist", "lsp" },
   filetypes = { "typst" },
   formatterMode = "typstyle",
   formatterPrintWidth = 100,

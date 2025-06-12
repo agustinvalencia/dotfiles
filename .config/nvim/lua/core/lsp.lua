@@ -1,8 +1,11 @@
--- completion configs
+-- completion
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(ev)
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
-    if client ~= nil and client:supports_method("textDocument/completion") then
+    if not client then
+      return
+    end
+    if client:supports_method("textDocument/completion") then
       vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
     end
   end,
@@ -14,8 +17,16 @@ vim.o.winborder = "rounded"
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(ev)
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
-    if client ~= nil and client:supports_method("textDocument/formatting") then
-      vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+    if not client then
+      return
+    end
+
+    if client:supports_method("textDocument/formatting") then
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        callback = function()
+          vim.lsp.buf.format({ bufnr = ev.buf, id = client.id })
+        end,
+      })
     end
   end,
 })
