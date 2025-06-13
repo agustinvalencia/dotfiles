@@ -39,7 +39,7 @@ return {
     explorer = { enabled = true },
     indent = { enabled = true },
     input = { enabled = true, win = { style = "input" } },
-    image = { enabled = true },
+    image = { enabled = false },
     notifier = {
       enabled = true,
       timeout = 2000,
