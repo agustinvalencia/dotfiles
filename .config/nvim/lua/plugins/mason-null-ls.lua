@@ -1,5 +1,6 @@
 -- mason-null-ls.lua
 return {
+    enabled=false,
   'jayp0521/mason-null-ls.nvim',
   dependencies = {
     'williamboman/mason.nvim',

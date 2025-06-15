@@ -87,7 +87,6 @@
     "template": " ",
     "background": "transparent",
     "foreground": "p:lavender",
-    "filler": "_",
     "newline": true
   }
 }

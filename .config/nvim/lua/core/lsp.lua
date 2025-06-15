@@ -6,7 +6,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       return
     end
     if client:supports_method("textDocument/completion") then
-      vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+      vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = false })
     end
   end,
 })
@@ -36,9 +36,10 @@ vim.lsp.enable({
   "lua_ls",
   "tinymist",
   "pyright",
+  "ruff",
 })
 
-vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, opts)
+-- vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, opts)
 
 vim.diagnostic.config({
   -- virtual_lines = true,
