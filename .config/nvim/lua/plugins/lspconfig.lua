@@ -1,7 +1,6 @@
 -- lspconfig.lua
 return {
   "neovim/nvim-lspconfig",
-  -- enabled = false,
   dependencies = {
     { "williamboman/mason.nvim", config = true },
     "williamboman/mason-lspconfig.nvim",

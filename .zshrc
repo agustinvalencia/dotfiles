@@ -1,3 +1,6 @@
+autoload -Uz compinit
+compinit
+
 if [ -f "$HOME/.cargo/env" ]; then
     . "$HOME/.cargo/env"
     export PATH="$HOME/.cargo/bin/":$PATH
@@ -90,8 +93,18 @@ eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/catppuccin.json)"
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
 
+# Fix completions for uv run to autocomplete .py files
+eval "$(uv generate-shell-completion zsh)"
+eval "$(uvx --generate-shell-completion zsh)"
+_uv_run_mod() {
+    if [[ "$words[2]" == "run" && "$words[CURRENT]" != -* ]]; then
+        _arguments '*:filename:_files -g "*.py"'
+    else
+        _uv "$@"
+    fi
+}
+compdef _uv_run_mod uv
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-eval "$(uv generate-shell-completion zsh)"
-eval "$(uvx --generate-shell-completion zsh)"

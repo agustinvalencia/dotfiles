@@ -15,7 +15,7 @@ return {
     },
     {
       "<leader>cs",
-      "<cmd>Trouble symbols toggle focus=true<cr>",
+      "<cmd>Trouble symbols toggle focus=true win.position=left<cr>",
       desc = "Symbols",
     },
     -- {
@@ -30,13 +30,13 @@ return {
     },
     {
       "<leader>ci",
-      "<cmd>Trouble lsp_incoming_calls toggle focus=true<cr>",
-      desc = "LSP references",
+      "<cmd>Trouble lsp_incoming_calls toggle focus=true win.position=bottom<cr>",
+      desc = "LSP Incoming Calls",
     },
     {
       "<leader>co",
-      "<cmd>Trouble lsp_outgoing_calls toggle focus=true<cr>",
-      desc = "LSP references",
+      "<cmd>Trouble lsp_outgoing_calls toggle focus=true win.position=bottom<cr>",
+      desc = "LSP Outgoing Calls",
     },
     {
       "<leader>cL",

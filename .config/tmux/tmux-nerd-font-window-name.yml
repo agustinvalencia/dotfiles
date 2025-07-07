@@ -8,6 +8,7 @@ icons:
   zsh: " " # overwrite with your own symbol (Nerd Font icon, emoji, whatever!)
   sh: " "
   bash: " "
+  yazi: " "
   python: " "
   uv: " "
   lazygit: " "

@@ -18,15 +18,38 @@
         {
           "type": "path",
           "foreground": "p:pink",
+          "style": "plain",
+          "template": "{{ .Path }} ",
+          "min_width": 80,
           "properties": {
-            "folder_icon": " ",
-            "home_icon": " ",
+            "mapped_locations": {
+              "~/repositories/privates/": " ",
+              "~/repositories/": " "
+            },
+            "folder_icon": " ",
+            "home_icon": " ",
+            "style": "agnoster_full"
+          }
+        },
+        // This segment will only display if the terminal is 79 columns or narrower
+        {
+          "type": "path",
+          "foreground": "p:pink",
+          "style": "plain",
+          "template": "{{ .Path }} ",
+          "max_width": 79,
+          "properties": {
+            "folder_icon": " ",
+            "home_icon": " ",
+            "mapped_locations": {
+              "~/repositories/privates/": " ",
+              "~/repositories/": " "
+            },
             "style": "mixed",
             "mixed_threshold": 3
-          },
-          "style": "plain",
-          "template": "{{ .Path }} "
+          }
         },
+
         {
           "type": "git",
           "foreground": "p:lavender",
@@ -81,12 +104,14 @@
       "type": "prompt"
     }
   ],
+
   "final_space": true,
   "version": 3,
+
   "transient_prompt": {
-    "template": " ",
     "background": "transparent",
     "foreground": "p:lavender",
-    "newline": true
+    "newline": true,
+    "template": " "
   }
 }

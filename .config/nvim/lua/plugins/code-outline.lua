@@ -1,6 +1,6 @@
 return {
   "stevearc/aerial.nvim",
-  enable = false,
+  -- enable = false,
   opts = {
     default_direction = "right",
     placement = "edge",
