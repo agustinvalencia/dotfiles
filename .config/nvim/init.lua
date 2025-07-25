@@ -11,10 +11,14 @@ require("core.lazy")
 require("core.lsp")
 
 -- Enable each server by its filename
-vim.lsp.enable("lua_ls")
-vim.lsp.enable("pyright")
-vim.lsp.enable("ruff")
-vim.lsp.enable("rust_analyzer")
+vim.lsp.enable({
+  "lua_ls",
+  "ruff",
+  "ty",
+  -- "pyright",
+  "tinymist",
+  "rust_analyzer",
+})
 
 require("config.keymaps")
 require("config.autocmds")

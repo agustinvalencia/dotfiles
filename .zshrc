@@ -29,7 +29,7 @@ bindkey '^[[A' up-line-or-beginning-search
 bindkey '^[[B' down-line-or-beginning-search
 
 alias ls='eza --color -a '
-alias ll='eza --color -l --header --git --icons=always'
+alias ll='eza --color -l -a --header --git --icons=always'
 alias la='eza --color -l -a --header --git --icons=always'
 alias tree='eza --tree --color --icons=always' 
 

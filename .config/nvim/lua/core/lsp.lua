@@ -5,22 +5,21 @@ local M = {}
 
 -- Shared on_attach: keymaps, format-on-save, rename, etc.
 function M.on_attach(client, bufnr)
-  -- Base options for keymaps
-  local base_opts = { noremap = true, silent = true, buffer = bufnr }
+  local opts = { buffer = bufnr, noremap = true, silent = true }
+  -- See `:help vim.lsp.*` for more information on the functions below.
+  vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+  vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+  vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+  vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+  vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
+  vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, opts)
+  vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
 
-  -- Workspace-wide rename
-  vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, vim.tbl_extend("force", base_opts, { desc = "[C]ode [R]ename symbol (LSP)" }))
-
-  -- Go to definition
-  vim.keymap.set("n", "gd", vim.lsp.buf.definition, vim.tbl_extend("force", base_opts, { desc = "[G]o to [D]efinition (LSP)" }))
-
-  -- Hover documentation
-  vim.keymap.set("n", "K", vim.lsp.buf.hover, vim.tbl_extend("force", base_opts, { desc = "Hover documentation (LSP)" }))
-
-  -- Format buffer
-  vim.keymap.set("n", "<leader>cf", function()
-    vim.lsp.buf.format({ bufnr = bufnr, async = true })
-  end, vim.tbl_extend("force", base_opts, { desc = "[C]ode [F]ormat buffer (LSP)" }))
+  -- This enables inlay hints for Rust.
+  -- can toggle them with a keymap if needed later.
+  if client.name == "rust_analyzer" then
+    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+  end
 
   -- Auto-format on save if supported
   if client.supports_method("textDocument/formatting") then
@@ -33,16 +32,6 @@ function M.on_attach(client, bufnr)
     })
   end
 end
-
--- Setup on_attach for any server via LspAttach
-vim.api.nvim_create_autocmd("LspAttach", {
-  callback = function(ev)
-    local client = vim.lsp.get_client_by_id(ev.data.client_id)
-    if client then
-      M.on_attach(client, ev.buf)
-    end
-  end,
-})
 
 -- Diagnostic UI settings
 vim.diagnostic.config({
@@ -64,12 +53,6 @@ vim.diagnostic.config({
   },
 })
 
--- Bootstrap native LSP servers by name
--- Call this from init.lua with a list of server names
-function M.enable_servers(server_list)
-  for _, name in ipairs(server_list) do
-    vim.lsp.enable(name)
-  end
-end
+M.capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 return M

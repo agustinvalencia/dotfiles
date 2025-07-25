@@ -72,6 +72,10 @@ return {
           scope_color = "lavender", -- catppuccin color (eg. `lavender`) Default: text
           colored_indent_levels = false,
         },
+        snacks = {
+          enabled = true,
+          indent_scope_color = "lavender",
+        },
       },
     })
   end,
