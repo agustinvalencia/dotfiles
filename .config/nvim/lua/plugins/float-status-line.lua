@@ -15,7 +15,7 @@ return {
         return {
           ft_icon and { " ", ft_icon, " ", guibg = C.blue, guifg = C.base },
           filename,
-          modified and { "   ", guifg = C.yellow, gui = "bold" } or "",
+          modified and { "   ", guifg = C.maroon, gui = "bold" } or "",
           " ",
           guibg = C.blue,
           guifg = C.base,
