@@ -15,8 +15,25 @@ function M.on_attach(client, bufnr)
   vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, opts)
   vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
 
-  -- This enables inlay hints for Rust.
-  -- can toggle them with a keymap if needed later.
+  -- LATEX
+  if client.name == "texlab" then
+    -- Keymap for manually compiling the document
+    vim.keymap.set("n", "<leader>lb", function()
+      vim.lsp.buf_execute_command({ command = "texlab.build" })
+    end, { buffer = bufnr, desc = "Latex: Build" })
+
+    -- Keymap for forward search (viewing the PDF)
+    vim.keymap.set("n", "<leader>lv", function()
+      vim.lsp.buf_execute_command({ command = "texlab.forwardSearch" })
+    end, { buffer = bufnr, desc = "Latex: View PDF" })
+
+    -- Keymap for manually formatting the document
+    vim.keymap.set("n", "<leader>lf", function()
+      vim.lsp.buf.format({ async = true })
+    end, { buffer = bufnr, desc = "Latex: Format" })
+  end
+
+  -- RUST
   if client.name == "rust_analyzer" then
     vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
   end

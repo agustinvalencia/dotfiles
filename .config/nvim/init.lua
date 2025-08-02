@@ -15,9 +15,10 @@ vim.lsp.enable({
   "lua_ls",
   "ruff",
   "ty",
-  -- "pyright",
+  "pyright",
   "tinymist",
   "rust_analyzer",
+  "texlab",
 })
 
 require("config.keymaps")
