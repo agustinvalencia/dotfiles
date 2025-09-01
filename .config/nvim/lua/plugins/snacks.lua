@@ -1,116 +1,113 @@
 return {
-    "folke/snacks.nvim",
-    priority = 1000,
-    lazy = false,
-    ---@type snacks.Config
-    opts = {
-        bigfile = { enabled = true },
-        dashboard = {
-            enabled = true,
-            sections = {
-                { section = "header" },
-                {
-                    pane = 2,
-                    section = "terminal",
-                    cmd = "echo 'NO' ",
-                    height = 5,
-                    padding = 1,
-                },
-                { section = "keys", gap = 1, padding = 1 },
-                { pane = 2, icon = " ", title = "Recent Files", indent = 2, padding = 1, section = "recent_files" },
-                { pane = 2, icon = " ", title = "Projects", indent = 2, padding = 1, section = "projects" },
-                {
-                    pane = 2,
-                    icon = " ",
-                    title = "Git Status",
-                    section = "terminal",
-                    enabled = function()
-                        return Snacks.git.get_root() ~= nil
-                    end,
-                    cmd = "git status --short --branch --renames",
-                    height = 5,
-                    padding = 1,
-                    ttl = 5 * 60,
-                    indent = 3,
-                },
-                { section = "startup" },
-            },
+  "folke/snacks.nvim",
+  priority = 1000,
+  lazy = false,
+  ---@type snacks.Config
+  opts = {
+    bigfile = { enabled = true },
+    dashboard = {
+      enabled = true,
+      sections = {
+        {
+          pane = 2,
+          height = 5,
+          padding = 1,
         },
-        explorer = {
-            enabled = true,
-            win = {
-                position = "right", -- Now opens on the right side
-            },
+        { section = "keys", gap = 1, padding = 1 },
+        { pane = 2, icon = " ", title = "Recent Files", indent = 2, padding = 1, section = "recent_files" },
+        { pane = 2, icon = " ", title = "Projects", indent = 2, padding = 1, section = "projects" },
+        {
+          pane = 2,
+          icon = " ",
+          title = "Git Status",
+          section = "terminal",
+          enabled = function()
+            return Snacks.git.get_root() ~= nil
+          end,
+          cmd = "git status --short --branch --renames",
+          height = 5,
+          padding = 1,
+          ttl = 5 * 60,
+          indent = 3,
         },
-        indent = { enabled = true },
-        input = { enabled = true, win = { style = "input" } },
-        image = { enabled = false },
-        notifier = {
-            enabled = true,
-            timeout = 2000,
-        },
-        terminal = {
-            enabled = false,
-            win = {
-                position = "float",
-                border = "rounded",
-                height = 0.8,
-                width = 0.8,
-                title_pos = "center",
-            },
-        },
-        picker = {
-            enabled = true,
-            previewers = {
-                diff = { builtin = false },
-                git = { builtin = false },
-            },
-            sources = {
-                explorer = {
-                    layout = {
-                        preset = "sidebar",
-                        preview = { main = true, enabled = false },
-                    },
-                },
-                files_with_symbols = {
-                    multi = { "files", "lsp_symbols" },
-                    filter = {
-                        ---@param p snacks.Picker
-                        ---@param filter snacks.picker.Filter
-                        transform = function(p, filter)
-                            local symbol_pattern = filter.pattern:match("^.-@(.*)$")
-                            -- store the current file buffer
-                            if filter.source_id ~= 2 then
-                                local item = p:current()
-                                if item and item.file then
-                                    filter.meta.buf = vim.fn.bufadd(item.file)
-                                end
-                            end
-
-                            if symbol_pattern and filter.meta.buf then
-                                filter.pattern = symbol_pattern
-                                filter.current_buf = filter.meta.buf
-                                filter.source_id = 2
-                            else
-                                filter.source_id = 1
-                            end
-                        end,
-                    },
-                },
-            },
-        },
-        quickfile = { enabled = true },
-        scope = { enabled = true },
-        scroll = { enabled = true },
-        statuscolumn = { enabled = true },
-        words = { enabled = true },
-        styles = {
-            notification = {
-                -- wo = { wrap = true } -- Wrap notifications
-            },
-        },
+        { section = "startup" },
+      },
     },
-    keys = {
+    explorer = {
+      enabled = true,
+      win = {
+        position = "right", -- Now opens on the right side
+      },
+    },
+    indent = { enabled = true },
+    input = { enabled = true, win = { style = "input" } },
+    image = { enabled = false },
+    notifier = {
+      enabled = true,
+      timeout = 2000,
+    },
+    terminal = {
+      enabled = false,
+      win = {
+        position = "float",
+        border = "rounded",
+        height = 0.8,
+        width = 0.8,
+        title_pos = "center",
+      },
+    },
+    picker = {
+      enabled = true,
+      previewers = {
+        diff = { builtin = false },
+        git = { builtin = false },
+      },
+      sources = {
+        explorer = {
+          layout = {
+            preset = "sidebar",
+            preview = { main = true, enabled = false },
+          },
+        },
+        files_with_symbols = {
+          multi = { "files", "lsp_symbols" },
+          filter = {
+            ---@param p snacks.Picker
+            ---@param filter snacks.picker.Filter
+            transform = function(p, filter)
+              local symbol_pattern = filter.pattern:match("^.-@(.*)$")
+              -- store the current file buffer
+              if filter.source_id ~= 2 then
+                local item = p:current()
+                if item and item.file then
+                  filter.meta.buf = vim.fn.bufadd(item.file)
+                end
+              end
+
+              if symbol_pattern and filter.meta.buf then
+                filter.pattern = symbol_pattern
+                filter.current_buf = filter.meta.buf
+                filter.source_id = 2
+              else
+                filter.source_id = 1
+              end
+            end,
+          },
+        },
+      },
+    },
+    quickfile = { enabled = true },
+    scope = { enabled = true },
+    scroll = { enabled = true },
+    statuscolumn = { enabled = true },
+    words = { enabled = true },
+    styles = {
+      notification = {
+        -- wo = { wrap = true } -- Wrap notifications
+      },
+    },
+  },
+  keys = {
         -- stylua: ignore start
         -- Top Pickers & Explorer
         { "<leader><space>", function() Snacks.picker.smart() end,                                   desc = "Smart Find Files" },
@@ -184,40 +181,40 @@ return {
         { "<leader>un",      function() Snacks.notifier.hide() end,                                  desc = "Dismiss All Notifications" },
         { "<leader>tt",      function() Snacks.terminal() end,                                       desc = "Toggle Terminal" },
         { "<leader>tf",      function() Snacks.terminal.toggle('yazi') end,                          desc = "[T]erminal [F]iles explorer" },
-        -- { "]]",           function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" } },
-        -- { "[[",           function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" } },
-        -- stylua: ignore end
-        {
-            "<leader>N",
-            desc = "Neovim News",
-            function()
-                Snacks.win({
-                    file = vim.api.nvim_get_runtime_file("doc/news.txt", false)[1],
-                    width = 0.6,
-                    height = 0.6,
-                    wo = {
-                        spell = false,
-                        wrap = false,
-                        signcolumn = "yes",
-                        statuscolumn = " ",
-                        conceallevel = 3,
-                    },
-                })
-            end,
-        },
+    -- { "]]",           function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" } },
+    -- { "[[",           function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" } },
+    -- stylua: ignore end
+    {
+      "<leader>N",
+      desc = "Neovim News",
+      function()
+        Snacks.win({
+          file = vim.api.nvim_get_runtime_file("doc/news.txt", false)[1],
+          width = 0.6,
+          height = 0.6,
+          wo = {
+            spell = false,
+            wrap = false,
+            signcolumn = "yes",
+            statuscolumn = " ",
+            conceallevel = 3,
+          },
+        })
+      end,
     },
-    init = function()
-        vim.api.nvim_create_autocmd("User", {
-            pattern = "VeryLazy",
-            callback = function()
-                -- Setup some globals for debugging (lazy-loaded)
-                _G.dd = function(...)
-                    Snacks.debug.inspect(...)
-                end
-                _G.bt = function()
-                    Snacks.debug.backtrace()
-                end
-                vim.print = _G.dd -- Override print to use snacks for `:=` command
+  },
+  init = function()
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "VeryLazy",
+      callback = function()
+        -- Setup some globals for debugging (lazy-loaded)
+        _G.dd = function(...)
+          Snacks.debug.inspect(...)
+        end
+        _G.bt = function()
+          Snacks.debug.backtrace()
+        end
+        vim.print = _G.dd -- Override print to use snacks for `:=` command
 
                 -- Create some toggle mappings
                 -- stylua: ignore start
@@ -231,12 +228,12 @@ return {
                 -- Snacks.toggle.treesitter():map("<leader>uT")
                 -- Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
                 Snacks.toggle.inlay_hints():map("<leader>uh")
-                -- Snacks.toggle.indent():map("<leader>ug")
-                -- Snacks.toggle.dim():map("<leader>uD")
-                -- stylua: ignore end
-            end,
-        })
-    end,
+        -- Snacks.toggle.indent():map("<leader>ug")
+        -- Snacks.toggle.dim():map("<leader>uD")
+        -- stylua: ignore end
+      end,
+    })
+  end,
 }
 
 -- return {
