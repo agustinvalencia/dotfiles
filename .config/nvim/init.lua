@@ -23,4 +23,5 @@ vim.lsp.enable({
 
 require("config.keymaps")
 require("config.autocmds")
+require("config.wrapping")
 require("commands")
