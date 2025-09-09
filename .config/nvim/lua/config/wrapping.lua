@@ -110,7 +110,7 @@ local function set_code_opts()
   o.linebreak = false
   o.breakindent = false
   o.textwidth = 0
-  o.colorcolumn = "100"
+  o.colorcolumn = ""
   o.joinspaces = false
 end
 
