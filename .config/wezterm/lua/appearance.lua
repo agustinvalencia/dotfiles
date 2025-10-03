@@ -6,7 +6,7 @@ local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_right_hard_divider
 local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
 
 return function(config)
-	config.font_size = 14
+	config.font_size = 13
 	config.line_height = 1
 	config.font = wezterm.font_with_fallback({
 		{ family = "Fira Code", weight = "Medium" },
@@ -17,14 +17,21 @@ return function(config)
 
 	config.color_scheme = "catppuccin-mocha"
 	config.window_decorations = "RESIZE"
-	config.window_background_opacity = 0.97
+	config.window_background_opacity = 0.9
 	config.text_background_opacity = 1
 
-	config.window_padding = { left = 2, right = 2, top = 0, bottom = 0 }
+	config.window_padding = {
+		left = 2,
+		right = 2,
+		top = 2,
+		bottom = 2,
+	}
 
+	config.default_cursor_style = "BlinkingBlock"
 	config.colors = {
-		cursor_bg = "#7aa2f7",
-		cursor_border = "#7aa2f7",
+		cursor_bg = "#89b4fa",
+		cursor_border = "#89b4fa",
+		cursor_fg = "#6c7086",
 		tab_bar = {
 			background = "#1e1e2e",
 			active_tab = { fg_color = "#1e1e2e", bg_color = "#f5c2e7" },
@@ -36,4 +43,5 @@ return function(config)
 	-- bar/tabs need this visible
 	config.enable_tab_bar = true
 	config.hide_tab_bar_if_only_one_tab = false
+	config.show_new_tab_button_in_tab_bar = false
 end

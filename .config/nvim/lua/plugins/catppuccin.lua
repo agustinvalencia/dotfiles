@@ -1,26 +1,22 @@
 return {
-  -- You can easily change to a different colorscheme.
-  -- Change the name of the colorscheme plugin below, and then
-  -- change the command in the config to whatever the name of that colorscheme is.
-  --
-  -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
+
   "catppuccin/nvim",
   priority = 1000, -- Make sure to load this before all the other start plugins.
   init = function()
-    -- Load the colorscheme here.
-    -- Like many other themes, this one has different styles, and you could load
-    -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
     vim.cmd.colorscheme("catppuccin-mocha")
-
-    -- You can configure highlights by doing something like:
     vim.cmd.hi("Comment gui=none")
+    -- vim.cmd.hi("ColorColumn ctermbg=lightgrey guibg=lightgrey")
   end,
 
   config = function()
     require("catppuccin").setup({
-
       flavour = "macchiato",
       transparent_background = true,
+      auto_integrations = true,
+      float = {
+        transparent = false, -- enable transparent floating windows
+        solid = false, -- use solid styling for floating windows, see |winborder|
+      },
       styles = {
         comments = { "italic" },
         conditionals = { "italic" },
@@ -33,7 +29,6 @@ return {
         shade = "dark",
         percentage = 0.15, -- percentage of the shade to apply to the inactive window
       },
-
       markdown = true,
       render_markdown = true,
       noice = true,
@@ -41,6 +36,7 @@ return {
       default_integrations = true,
       custom_highlights = function(colors)
         return {
+          ["ColorColumn"] = { bg = colors.overlay0, fg = colors.red },
           -- NvimTreeNormal = { fg = colors.none },
           -- Comment = { fg = colors.flamingo },
           -- ["@keyword"] = { fg = colors.pink },

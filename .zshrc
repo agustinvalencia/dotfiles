@@ -18,6 +18,12 @@ export EDITOR=nvim
 export VISUAL="$EDITOR"
 export PATH=/Users/eaguval/repositories/getting-started/user-scripts/:$PATH
 
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export CC="$(brew --prefix llvm)/bin/clang"
+export CXX="$(brew --prefix llvm)/bin/clang++"
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+
 setopt HIST_IGNORE_SPACE
 
 # using arrows to history-complete command
@@ -49,6 +55,7 @@ alias gps='git push'
 alias gcm='git commit -m'
 
 alias kube='kubectl'
+alias imcat='wezterm imgcat'
 
 alias edit-zsh='nvim $HOME/.zshrc'
 alias edit-nix='nvim $HOME/nix/flake.nix'

@@ -8,6 +8,10 @@ vim.api.nvim_set_keymap("n", "<C-j>", "<C-w>j", { noremap = true, silent = true 
 vim.api.nvim_set_keymap("n", "<C-k>", "<C-w>k", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<C-l>", "<C-w>l", { noremap = true, silent = true })
 
+-- Navigate to column 100 (useful for long-form text in markdown/latex/typst
+vim.api.nvim_set_keymap("n", "<leader>uc", "100|", { desc = "Go to column 100" })
+-- vim.api.nvim_set_keymap("n", "<leader>uc", "100|", { desc = "Go to column 100" })
+
 -- editor buffer split
 vim.keymap.set("n", "<leader>u-", "<cmd>split<cr>", { desc = "Horizontal Split" })
 vim.keymap.set("n", "<leader>u/", "<cmd>vsplit<cr>", { desc = "Vertical Split" })
@@ -28,9 +32,6 @@ vim.keymap.set("n", "<leader>th", function()
 end, { desc = "[T]erminal [H]orizontal" })
 
 -- easy close
-vim.keymap.set({ "n", "t" }, "<leader>qq", "<cmd>q<cr>", { desc = "[Q]uick [Q]uit" })
-vim.keymap.set({ "n", "t" }, "<leader>xx", "<cmd>xa!<cr>", { desc = "[Q]uick save and quit [X]" })
-
 vim.keymap.set("n", "<leader>op", "<cmd>OpenPdf<cr>", { desc = "[O]pen [P]df" })
 vim.keymap.set("n", "<leader>bD", function()
   local bufs = vim.api.nvim_list_bufs()

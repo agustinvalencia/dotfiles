@@ -1,0 +1,11 @@
+[includeIf "gitdir:/Users/eaguval/repositories/work/"]
+    path = ~/.gitconfig-work
+
+[includeIf "gitdir:/Users/eaguval/repositories/personal/"]
+    path = ~/.gitconfig-personal
+
+[includeIf "gitdir:/Users/eaguval/dotfiles/"]
+    path = ~/.gitconfig-personal
+
+[user]
+	useConfigOnly = true

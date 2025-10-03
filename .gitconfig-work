@@ -1,0 +1,8 @@
+[user]
+    name = agustin valencia
+    email = agustin.valencia@ericsson.com
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f

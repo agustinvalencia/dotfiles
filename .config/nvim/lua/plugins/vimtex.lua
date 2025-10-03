@@ -1,5 +1,6 @@
 return {
   "lervag/vimtex",
+  enabled = false,
   lazy = false, -- load immediately for all TeX files
   -- tag = "v2.15", -- uncomment to pin to a specific release
   init = function()

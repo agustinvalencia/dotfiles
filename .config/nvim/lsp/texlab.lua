@@ -4,7 +4,7 @@ local core_lsp = require("core.lsp")
 
 return {
   cmd = { "texlab" },
-  filetypes = { "tex", "bib", "plaintex", "latex" },
+  filetypes = { "tex", "plaintex", "latex" },
   on_attach = core_lsp.on_attach,
   capabilities = core_lsp.capabilities,
   settings = {
@@ -14,8 +14,10 @@ return {
         onSave = true,
         args = { "--synctex" },
       },
-      format = {
-        onSave = true,
+      latexFormatter = "latexindent",
+      latexindent = {
+        ["local"] = ".latexindent.yaml",
+        modifyLineBreaks = false,
       },
       forwardSearch = {
         command = "/usr/bin/open",

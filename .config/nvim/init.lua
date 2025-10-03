@@ -13,7 +13,7 @@ require("core.lsp")
 -- Enable each server by its filename
 vim.lsp.enable({
   "lua_ls",
-  -- "ruff",
+  "ruff",
   -- "ty",
   "pyright",
   "tinymist",
