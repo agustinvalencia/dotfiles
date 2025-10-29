@@ -28,6 +28,8 @@ return {
       ["typescriptreact"] = { "prettier" },
       ["json"] = { "prettier" },
       ["typst"] = { "tinymist" },
+      c = { "clang_format" },
+      cpp = { "clang_format" },
     },
     -- Set default options
     default_format_opts = {

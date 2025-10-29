@@ -31,3 +31,9 @@ vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 vim.schedule(function()
   vim.opt.clipboard = "unnamedplus"
 end)
+
+vim.filetype.add({
+  extension = {
+    mdx = "mdx", -- treat .mdx as markdown
+  },
+})

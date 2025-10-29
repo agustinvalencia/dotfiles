@@ -27,7 +27,7 @@ return {
       dim_inactive = {
         enabled = false, -- dims the background color of inactive window
         shade = "dark",
-        percentage = 0.15, -- percentage of the shade to apply to the inactive window
+        percentage = 0.95, -- percentage of the shade to apply to the inactive window
       },
       markdown = true,
       render_markdown = true,
@@ -36,18 +36,19 @@ return {
       default_integrations = true,
       custom_highlights = function(colors)
         return {
-          ["ColorColumn"] = { bg = colors.overlay0, fg = colors.red },
+          ["ColorColumn"] = { bg = colors.overlay, fg = colors.red },
+          -- ["ColorColumn"] = { bg = colors.flamingo, fg = colors.surface2 },
           -- NvimTreeNormal = { fg = colors.none },
           -- Comment = { fg = colors.flamingo },
           -- ["@keyword"] = { fg = colors.pink },
           -- ["@keyword.import"] = { fg = colors.pink },
           -- ["@type"] = { fg = colors.blue },
           -- ["@variable.parameter"] = { fg = colors.teal },
-          -- ["@comment"] = { fg = colors.surface2, style = { "italic" } },
+          ["@comment"] = { fg = colors.overlay2, style = { "italic" } },
           -- ["@text.literal"] = { fg = colors.yellow },
           -- ["@error"] = { fg = colors.red },
           -- ["@string"] = { fg = colors.yellow },
-          -- ["@string.documentation"] = { fg = colors.subtext1, style = { "italic" } },
+          ["@string.documentation"] = { fg = colors.subtext1, style = { "italic" } },
           -- ["@function"] = { fg = colors.pink, bold = true },
           -- ["@lsp.type.selfKeyword"] = { fg = colors.pink },
           -- ["@ibl.indent.char.1"] = { fg = colors.surface2 },
@@ -70,7 +71,7 @@ return {
         },
         snacks = {
           enabled = true,
-          indent_scope_color = "lavender",
+          indent_scope_color = "flamingo",
         },
       },
     })

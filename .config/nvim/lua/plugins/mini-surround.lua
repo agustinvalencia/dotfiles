@@ -10,5 +10,18 @@ return {
       find = "",
       find_left = "",
     },
+    custom_surroundings = {
+      ["{"] = { output = { left = "{", right = "}" } },
+      ["}"] = { output = { left = "{", right = "}" } },
+      ["["] = { output = { left = "[", right = "]" } },
+      ["]"] = { output = { left = "[", right = "]" } },
+      ["("] = { output = { left = "(", right = ")" } },
+      [")"] = { output = { left = "(", right = ")" } },
+      ["<"] = { output = { left = "<", right = ">" } },
+      [">"] = { output = { left = "<", right = ">" } },
+    },
   },
+  -- keys = {
+  --   { "<leader>s", group = "surround", desc = "Surround" },
+  -- },
 }

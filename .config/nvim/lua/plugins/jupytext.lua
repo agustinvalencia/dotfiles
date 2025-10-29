@@ -1,7 +1,7 @@
 return {
   {
     "GCBallesteros/jupytext.nvim",
-    lazy = false,
+    lazy = true,
     config = function()
       require("jupytext").setup({
         style = "markdown",
@@ -13,6 +13,7 @@ return {
   {
     -- see the image.nvim readme for more information about configuring this plugin
     "3rd/image.nvim",
+    enabled = false,
     opts = {
       backend = "kitty", -- whatever backend you would like to use
       max_width = 100,
@@ -26,7 +27,8 @@ return {
   {
     "benlubas/molten-nvim",
     version = "^1.0.0", -- use version <2.0.0 to avoid breaking changes
-    lazy = false,
+    enabled = false,
+    lazy = true,
     build = ":UpdateRemotePlugins",
     init = function()
       vim.g.molten_image_provider = "image.nvim"

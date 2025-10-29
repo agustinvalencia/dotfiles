@@ -1,4 +1,8 @@
 [user]
 	name = agustin valencia
-	email = valencia.ag@gmail.com
-
+	email = aguvalenciag@gmail.com
+    signingkey=756EA6316A352A32
+[commit]
+    gpgsign = true
+[gpg]
+    program = gpg

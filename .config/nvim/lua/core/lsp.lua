@@ -5,48 +5,31 @@ local M = {}
 
 -- Shared on_attach: keymaps, format-on-save, rename, etc.
 function M.on_attach(client, bufnr)
-  local opts = { buffer = bufnr, noremap = true, silent = true }
-  -- See `:help vim.lsp.*` for more information on the functions below.
-  vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-  vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-  vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-  vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-  vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
-  vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, opts)
-  vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-
-  -- LATEX
-  if client.name == "texlab" then
-    -- Keymap for manually compiling the document
-    vim.keymap.set("n", "<leader>lb", function()
-      vim.lsp.buf_execute_command({ command = "texlab.build" })
-    end, { buffer = bufnr, desc = "Latex: Build" })
-
-    -- Keymap for forward search (viewing the PDF)
-    vim.keymap.set("n", "<leader>lv", function()
-      vim.lsp.buf_execute_command({ command = "texlab.forwardSearch" })
-    end, { buffer = bufnr, desc = "Latex: View PDF" })
-
-    -- Keymap for manually formatting the document
-    vim.keymap.set("n", "<leader>lf", function()
-      vim.lsp.buf.format({ async = true })
-    end, { buffer = bufnr, desc = "Latex: Format" })
+  local map = function(mode, lhs, rhs, desc)
+    vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, noremap = true, silent = true, desc = desc })
   end
+  map("n", "gD", vim.lsp.buf.declaration, "LSP: Declaration")
+  map("n", "gd", vim.lsp.buf.definition, "LSP: Definition")
+  map("n", "K", vim.lsp.buf.hover, "LSP: Hover")
+  map("n", "gi", vim.lsp.buf.implementation, "LSP: Implementation")
+  map("n", "<space>rn", vim.lsp.buf.rename, "LSP: Rename")
+  map("n", "<space>ca", vim.lsp.buf.code_action, "LSP: Code Action")
+  map("n", "gr", vim.lsp.buf.references, "LSP: References")
 
-  -- RUST
-  if client.name == "rust_analyzer" then
-    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-  end
-
-  -- Auto-format on save if supported
   if client.supports_method("textDocument/formatting") then
+    local grp = vim.api.nvim_create_augroup("LspFormat_" .. client.name, {})
     vim.api.nvim_create_autocmd("BufWritePre", {
-      group = vim.api.nvim_create_augroup("LspFormat_" .. client.name, {}),
+      group = grp,
       buffer = bufnr,
       callback = function()
         vim.lsp.buf.format({ bufnr = bufnr })
       end,
     })
+  end
+
+  -- RUST
+  if client.name == "rust_analyzer" then
+    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
   end
 end
 
@@ -70,6 +53,8 @@ vim.diagnostic.config({
   },
 })
 
-M.capabilities = require("cmp_nvim_lsp").default_capabilities()
+-- Capabilities (integrate with nvim-cmp if present)
+local ok, cmp = pcall(require, "cmp_nvim_lsp")
+M.capabilities = ok and cmp.default_capabilities() or vim.lsp.protocol.make_client_capabilities()
 
 return M

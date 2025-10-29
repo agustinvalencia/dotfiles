@@ -16,7 +16,8 @@ fi
 
 export EDITOR=nvim
 export VISUAL="$EDITOR"
-export PATH=/Users/eaguval/repositories/getting-started/user-scripts/:$PATH
+export PATH=/Users/eaguval/repositories/work/getting-started/user-scripts/:$PATH
+# source /Users/eaguval/repositories/getting-started/user-scripts/
 
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 export CC="$(brew --prefix llvm)/bin/clang"
@@ -46,13 +47,14 @@ alias cd='z'
 alias '..'='z ..'
 alias '...'='z ../..'
 alias '....'='z ../../..'
+alias vault='cd /Users/eaguval/Documents/Brain'
 
 alias lg='lazygit'
 alias ga='git add .'
 alias gs='git status'
 alias gpl='git pull'
 alias gps='git push'
-alias gcm='git commit -m'
+alias gcm='git commit -S -m'
 
 alias kube='kubectl'
 alias imcat='wezterm imgcat'

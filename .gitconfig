@@ -1,10 +1,13 @@
-[includeIf "gitdir:/Users/eaguval/repositories/work/"]
+[includeIf "gitdir:/Users/eaguval/repositories/work/**"]
     path = ~/.gitconfig-work
 
-[includeIf "gitdir:/Users/eaguval/repositories/personal/"]
+[includeIf "gitdir:/Users/eaguval/repositories/personal/**"]
     path = ~/.gitconfig-personal
 
 [includeIf "gitdir:/Users/eaguval/dotfiles/"]
+    path = ~/.gitconfig-personal
+
+[includeIf "gitdir:/Users/eaguval/.cargo/"]
     path = ~/.gitconfig-personal
 
 [user]

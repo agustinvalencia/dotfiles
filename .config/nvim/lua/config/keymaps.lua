@@ -9,31 +9,32 @@ vim.api.nvim_set_keymap("n", "<C-k>", "<C-w>k", { noremap = true, silent = true 
 vim.api.nvim_set_keymap("n", "<C-l>", "<C-w>l", { noremap = true, silent = true })
 
 -- Navigate to column 100 (useful for long-form text in markdown/latex/typst
-vim.api.nvim_set_keymap("n", "<leader>uc", "100|", { desc = "Go to column 100" })
+vim.api.nvim_set_keymap("n", "<leader>uc", "101|", { desc = "Go to column 101" })
 -- vim.api.nvim_set_keymap("n", "<leader>uc", "100|", { desc = "Go to column 100" })
 
 -- editor buffer split
 vim.keymap.set("n", "<leader>u-", "<cmd>split<cr>", { desc = "Horizontal Split" })
 vim.keymap.set("n", "<leader>u/", "<cmd>vsplit<cr>", { desc = "Vertical Split" })
 
+local wk = require("which-key")
+
 -- terminal split
--- copied from TJ's advent of neovim in youtube
-vim.keymap.set("n", "<leader>tv", function()
+local create_terminal = function(orient)
+  if orient == "h" then
+    arg = "J"
+  elseif orient == "v" then
+    arg = "L"
+  else
+    print("Unknown orientation")
+    return
+  end
   vim.cmd.vnew()
   vim.cmd.term()
-  vim.cmd.wincmd("L")
-end, { desc = "[T]erminal [V]ertical" })
-
-vim.keymap.set("n", "<leader>th", function()
-  vim.cmd.new()
-  vim.cmd.term()
-  vim.cmd.wincmd("J")
-  vim.api.nvim_win_set_height(0, 10)
-end, { desc = "[T]erminal [H]orizontal" })
+  vim.cmd.wincmd(arg)
+end
 
 -- easy close
-vim.keymap.set("n", "<leader>op", "<cmd>OpenPdf<cr>", { desc = "[O]pen [P]df" })
-vim.keymap.set("n", "<leader>bD", function()
+local close_other_buffers = function()
   local bufs = vim.api.nvim_list_bufs()
   local current_buf = vim.api.nvim_get_current_buf()
   for _, i in ipairs(bufs) do
@@ -41,4 +42,34 @@ vim.keymap.set("n", "<leader>bD", function()
       vim.api.nvim_buf_delete(i, {})
     end
   end
-end, { desc = "[B]uffer [D]elete All BUT this one" })
+end
+
+-- stylua: ignore start
+wk.add({
+  -- First level containers
+  { "<leader>l", group = "LaTeX", desc = "LaTeX" },
+  { "<leader>g", group = "Git", desc = "Git" },
+  { "<leader>c", group = "Code", desc = "Code" },
+  { "<leader>u", group = "UI", desc = "UI" },
+  { "<leader>f", group = "Find", desc = "Find" },
+  { "<leader>s", group = "Search", desc = "Search" },
+
+  -- Quick close
+  { "<leader>w", "<cmd>w<cr>", desc = "Save" },
+  { "<leader>W", "<cmd>wa<cr>", desc = "Save All" },
+  { "<leader>q", "<cmd>q<cr>", desc = "Quit" },
+  { "<leader>Q", "<cmd>qa<cr>", desc = "Quit All" },
+  { "<leader>x", "<cmd>x<cr>", desc = "Save and Quit" },
+  { "<leader>X", "<cmd>xa<cr>", desc = "Save All and Quit" },
+
+  -- Buffers
+  { "<leader>b", group = "Buffer", desc = "Buffer" },
+  { "<leader>bb", "<C-6>", desc = "Back" },
+  { "<leader>bD", function () close_other_buffers() end, desc = "[B]uffer [D]elete All BUT this one" },
+
+  -- Terminal
+  { "<leader>t", group = "Terminal", desc = "Terminal" },
+  { "<leader>tv", function() create_terminal("v") end, desc = "Create Vertical Terminal", },
+  { "<leader>th", function() create_terminal("h") end, desc = "Create Horizontal Terminal", },
+})
+-- stylua: ignore end

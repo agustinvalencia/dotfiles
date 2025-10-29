@@ -12,5 +12,7 @@ return {
       end,
       desc = "Buffer Local Keymaps (which-key)",
     },
+    -- { "<leader>b", group = "Buffer", desc = "Buffer" },
+    -- { "<leader>l", group = "latex", desc = "LaTeX" },
   },
 }

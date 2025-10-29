@@ -19,9 +19,10 @@ vim.lsp.enable({
   "tinymist",
   "rust_analyzer",
   "texlab",
+  "ltex",
+  "clangd",
 })
 
 require("config.keymaps")
 require("config.autocmds")
-require("config.wrapping")
 require("commands")

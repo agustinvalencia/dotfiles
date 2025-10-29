@@ -10,7 +10,7 @@ return {
   settings = {
     texlab = {
       build = {
-        engine = "tectonic",
+        engine = "latexmk",
         onSave = true,
         args = { "--synctex" },
       },
