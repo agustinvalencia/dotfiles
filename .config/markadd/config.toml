@@ -1,0 +1,12 @@
+version = 1
+profile = "default"
+
+[profiles.default]
+vault_root = "~/.config/markadd/"
+templates_dir = "{{vault_root}}/templates"
+captures_dir  = "{{vault_root}}/captures"
+macros_dir    = "{{vault_root}}/macros"
+
+[security]
+allow_shell = false
+allow_http  = false

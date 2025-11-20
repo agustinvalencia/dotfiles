@@ -23,5 +23,8 @@ return {
       },
     })
   end,
-  keymaps = {},
+  keys = {
+    { "<leader>po", "<cmd>PromptTower ui <cr>", desc = "Open Prompt Tower" },
+    { "<leader>pg", "<cmd>PromptTower generate <cr>", desc = "Generate Prompt" },
+  },
 }

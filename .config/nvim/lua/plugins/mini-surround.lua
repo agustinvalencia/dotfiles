@@ -21,7 +21,4 @@ return {
       [">"] = { output = { left = "<", right = ">" } },
     },
   },
-  -- keys = {
-  --   { "<leader>s", group = "surround", desc = "Surround" },
-  -- },
 }

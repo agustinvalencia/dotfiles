@@ -6,8 +6,6 @@ end
 
 require("config.options")
 require("core.lazy")
-
--- Ensure core LSP hooks are defined
 require("core.lsp")
 
 -- Enable each server by its filename

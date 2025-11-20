@@ -1,3 +1,4 @@
+-- return{}
 return {
   "L3MON4D3/LuaSnip",
   version = "v2.*",
@@ -10,7 +11,7 @@ return {
     local types = require("luasnip.util.types")
 
     -- Load community VSCode-format snippets + your own Lua snippets
-    require("luasnip.loaders.from_vscode").lazy_load()
+    -- require("luasnip.loaders.from_vscode").lazy_load()
     require("luasnip.loaders.from_lua").lazy_load({ paths = { vim.fn.stdpath("config") .. "/lua/snippets" } })
 
     -- Sensible behaviour

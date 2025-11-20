@@ -53,6 +53,7 @@ wk.add({
   { "<leader>u", group = "UI", desc = "UI" },
   { "<leader>f", group = "Find", desc = "Find" },
   { "<leader>s", group = "Search", desc = "Search" },
+  { "<leader>m", group = "Markview", desc = "Markview" },
 
   -- Quick close
   { "<leader>w", "<cmd>w<cr>", desc = "Save" },

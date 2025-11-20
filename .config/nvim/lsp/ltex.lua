@@ -1,6 +1,5 @@
 local core_lsp = require("core.lsp")
 local cfgdir = vim.fn.stdpath("config")
-
 return {
   cmd = { "ltex-ls" },
   on_attach = core_lsp.on_attach,
@@ -9,12 +8,18 @@ return {
     "tex",
     "markdown",
     "mdx",
-    "typst",
+    -- "typst",
     "gitcommit",
     "text",
   },
 
-  root_markers = { ".git", "latexindent.yaml", ".latexmkrc", "typst.toml", ".marksman.toml" },
+  root_markers = {
+    ".git",
+    "latexindent.yaml",
+    ".latexmkrc",
+    -- "typst.toml",
+    ".marksman.toml",
+  },
 
   settings = {
     ltex = {

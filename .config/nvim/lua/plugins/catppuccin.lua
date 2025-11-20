@@ -29,10 +29,6 @@ return {
         shade = "dark",
         percentage = 0.95, -- percentage of the shade to apply to the inactive window
       },
-      markdown = true,
-      render_markdown = true,
-      noice = true,
-      which_key = true,
       default_integrations = true,
       custom_highlights = function(colors)
         return {
@@ -56,23 +52,32 @@ return {
         }
       end,
       integrations = {
-        treesitter = true,
-        mini = {
+        colorful_winsep = {
           enabled = true,
-          indentscope_color = "",
+          color = "red",
         },
-        rainbow_delimiters = true,
-        render_markdown = true,
-        which_key = true,
+        flash = true,
+        fzf = true,
         indent_blankline = {
           enabled = true,
-          scope_color = "lavender", -- catppuccin color (eg. `lavender`) Default: text
-          colored_indent_levels = false,
+          scope_color = "lavender",
+          colored_indent_levels = true,
         },
+        markview = true,
+        mini = {
+          enabled = true,
+          indentscope_color = "red",
+        },
+        noice = true,
+        nvim_surround = true,
+        rainbow_delimiters = true,
         snacks = {
           enabled = true,
-          indent_scope_color = "flamingo",
+          indent_scope_color = "green",
         },
+        treesitter = true,
+        lsp_trouble = true,
+        which_key = true,
       },
     })
   end,

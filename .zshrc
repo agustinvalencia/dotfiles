@@ -16,6 +16,8 @@ fi
 
 export EDITOR=nvim
 export VISUAL="$EDITOR"
+export UV_CACHE_DIR="$HOME/.cache/uv/"
+export UV_LINK_MODE="hardlink"
 export PATH=/Users/eaguval/repositories/work/getting-started/user-scripts/:$PATH
 # source /Users/eaguval/repositories/getting-started/user-scripts/
 
