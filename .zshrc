@@ -100,8 +100,9 @@ function files() {
 }
 alias fs='files'
 
-eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/catppuccin.json)"
+# eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/catppuccin.json)"
 eval "$(fzf --zsh)"
+eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
 # Fix completions for uv run to autocomplete .py files
