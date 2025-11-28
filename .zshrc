@@ -49,7 +49,6 @@ alias cd='z'
 alias '..'='z ..'
 alias '...'='z ../..'
 alias '....'='z ../../..'
-alias vault='cd /Users/eaguval/Documents/Brain'
 
 alias lg='lazygit'
 alias ga='git add .'
@@ -64,6 +63,11 @@ alias imcat='wezterm imgcat'
 alias edit-zsh='nvim $HOME/.zshrc'
 alias edit-nix='nvim $HOME/nix/flake.nix'
 alias edit-zj='nvim $HOME/.config/zellij/config.kdl'
+
+# bookmarks
+alias vault='cd /Users/eaguval/Documents/Brain'
+alias icloud="cd '/Users/eaguval/Library/Mobile Documents/com~apple~CloudDocs/'"
+alias onedrive="cd '/Users/eaguval/Library/CloudStorage/OneDrive-Ericsson'"
 
 function reload-zsh() {
     echo "Reloading $HOME/.zshrc ... "

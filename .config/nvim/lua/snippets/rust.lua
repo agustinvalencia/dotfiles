@@ -86,4 +86,21 @@ pub struct {structName} {{
       }
     )
   ),
+
+  s(
+    {
+      trig = "error",
+      name = "error macro",
+      dscr = "error macro",
+    },
+    fmt(
+      [[
+#[error("{content}")]
+{cursor}]],
+      {
+        content = i(1, "content"),
+        cursor = i(0),
+      }
+    )
+  ),
 }
