@@ -6,7 +6,7 @@ add_newline = true
 
 # Use custom format
 format = '''
-[ ](blue)$directory$fill $rust$package$python$git_branch$git_status
+[ ](blue)$directory$fill $rust$package$python$git_branch$git_status$kubernetes
 [  ](blue) '''
 
 # Starship modules
@@ -53,6 +53,12 @@ renamed = " ${count}"
 untracked = " ${count}"
 modified = " ${count}"
 staged = " ${count}"
+
+[kubernetes]
+disabled = false
+symbol = "󰠳 "
+style = 'cyan'	
+format = '[$symbol $namespace]($style) '
 
 [fill]
 symbol = ' '

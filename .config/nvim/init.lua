@@ -19,6 +19,7 @@ vim.lsp.enable({
   "texlab",
   "ltex",
   "clangd",
+    "typescript_language_server",
 })
 
 require("config.keymaps")
